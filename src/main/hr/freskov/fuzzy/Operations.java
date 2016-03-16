@@ -75,12 +75,14 @@ public class Operations {
 		}
 
 		IDomain domain = fuzzySet.getDomain();
-		MutableFuzzySet resultFS = new MutableFuzzySet(domain);
-		for (DomainElement element : domain) {
-			resultFS.setMembership(element, function.valueAt(fuzzySet.getMembership(element)));
-		}
-
-		return resultFS;
+		
+		return new CalculatedFuzzySet(domain, new IIntUnaryFunction() {
+			@Override
+			public double valueAt(int arg) {
+				DomainElement element = domain.getElement(arg);
+				return function.valueAt(fuzzySet.getMembership(element));
+			}
+		});
 	}
 
 	/**
@@ -100,18 +102,18 @@ public class Operations {
 			throw new IllegalArgumentException("Argument should not be null.");
 		}
 		if (!fuzzySet1.getDomain().equals(fuzzySet2.getDomain())) {
-			throw new UnsupportedOperationException("Fuzzy sets have different domains.");
+			throw new IllegalArgumentException("Fuzzy sets have different domains.");
 		}
 		
 		IDomain domain = fuzzySet1.getDomain();
-		MutableFuzzySet resultFS = new MutableFuzzySet(domain);
-		for (DomainElement element : domain) {
-			resultFS.setMembership(
-					element, 
-					function.valueAt(fuzzySet1.getMembership(element), fuzzySet2.getMembership(element)));
-		}
 		
-		return resultFS;
+		return new CalculatedFuzzySet(domain, new IIntUnaryFunction() {
+			@Override
+			public double valueAt(int arg) {
+				DomainElement element = domain.getElement(arg);
+				return function.valueAt(fuzzySet1.getMembership(element), fuzzySet2.getMembership(element));
+			}
+		});
 	}
 
 }

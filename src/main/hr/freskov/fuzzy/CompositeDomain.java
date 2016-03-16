@@ -10,7 +10,7 @@ import java.util.Iterator;
  * @author freskov
  * @version 1.0
  */
-public class CompositeDomain extends Domain {
+public class CompositeDomain implements IDomain {
 
 	private SimpleDomain[] components;
 

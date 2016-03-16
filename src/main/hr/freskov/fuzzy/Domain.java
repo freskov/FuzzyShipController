@@ -1,7 +1,5 @@
 package hr.freskov.fuzzy;
 
-import java.util.Arrays;
-
 /**
  * Abstract domain implementing static methods for creating simple and composite
  * domains through {@link #intRange(int, int)} and
@@ -10,7 +8,7 @@ import java.util.Arrays;
  * @author freskov
  * @version 1.0
  */
-public abstract class Domain implements IDomain {
+public abstract class Domain {
 
 	/**
 	 * Constructs a simple integer domain <code>[first, last]</code>
@@ -49,16 +47,6 @@ public abstract class Domain implements IDomain {
 			components[numberOfComponentsA + i] = (SimpleDomain) b.getComponent(i);
 		}
 		return new CompositeDomain(components);
-	}
-
-	@Override
-	public String toString() {
-		DomainElement[] elements = new DomainElement[getCardinality()];
-		int index = 0;
-		for (DomainElement de : this) {
-			elements[index++] = de;
-		}
-		return "[Domain=" + Arrays.toString(elements) + ", Cardinality=" + getCardinality() + "]";
 	}
 
 }

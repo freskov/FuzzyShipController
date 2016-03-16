@@ -65,5 +65,12 @@ public class OperationsTest {
 					1e-9);
 		}
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void differentDomains() {
+		IFuzzySet fs1 = new CalculatedFuzzySet(Domain.intRange(0, 75), StandardFuzzySets.gammaFunction(25, 75));
+		IFuzzySet fs2 = new CalculatedFuzzySet(Domain.intRange(0, 100), StandardFuzzySets.lFunction(25, 75));
+		Operations.binaryOperation(fs1, fs2, Operations.zadehOr());
+	}
 
 }

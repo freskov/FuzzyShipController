@@ -8,7 +8,7 @@ import java.util.Iterator;
  * @author freskov
  * @version 1.0
  */
-public class SimpleDomain extends Domain {
+public class SimpleDomain implements IDomain  {
 
 	private int first;
 	private int last;
