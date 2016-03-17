@@ -11,25 +11,16 @@ public class Operations {
 	private Operations() {
 	}
 
-	private static final IUnaryFunction ZADEH_NOT = new IUnaryFunction() {
-		@Override
-		public double valueAt(double arg) {
-			return 1.0 - arg;
-		}
+	private static final IUnaryFunction ZADEH_NOT = a -> {
+		return 1-a;
 	};
 
-	private static final IBinaryFunction ZADEH_OR = new IBinaryFunction() {
-		@Override
-		public double valueAt(double arg1, double arg2) {
-			return Math.max(arg1, arg2);
-		}
+	private static final IBinaryFunction ZADEH_OR = (a, b) -> {
+		return Math.max(a, b);
 	};
 
-	private static final IBinaryFunction ZADEH_AND = new IBinaryFunction() {
-		@Override
-		public double valueAt(double arg1, double arg2) {
-			return Math.min(arg1, arg2);
-		}
+	private static final IBinaryFunction ZADEH_AND = (a, b) -> {
+			return Math.min(a, b);
 	};
 
 	/**
@@ -75,13 +66,10 @@ public class Operations {
 		}
 
 		IDomain domain = fuzzySet.getDomain();
-		
-		return new CalculatedFuzzySet(domain, new IIntUnaryFunction() {
-			@Override
-			public double valueAt(int arg) {
-				DomainElement element = domain.getElement(arg);
-				return function.valueAt(fuzzySet.getMembership(element));
-			}
+
+		return new CalculatedFuzzySet(domain, elementIndex -> {
+			DomainElement element = domain.getElement(elementIndex);
+			return function.valueAt(fuzzySet.getMembership(element));
 		});
 	}
 
@@ -104,15 +92,12 @@ public class Operations {
 		if (!fuzzySet1.getDomain().equals(fuzzySet2.getDomain())) {
 			throw new IllegalArgumentException("Fuzzy sets have different domains.");
 		}
-		
+
 		IDomain domain = fuzzySet1.getDomain();
-		
-		return new CalculatedFuzzySet(domain, new IIntUnaryFunction() {
-			@Override
-			public double valueAt(int arg) {
-				DomainElement element = domain.getElement(arg);
-				return function.valueAt(fuzzySet1.getMembership(element), fuzzySet2.getMembership(element));
-			}
+
+		return new CalculatedFuzzySet(domain, elementIndex -> {
+			DomainElement element = domain.getElement(elementIndex);
+			return function.valueAt(fuzzySet1.getMembership(element), fuzzySet2.getMembership(element));
 		});
 	}
 

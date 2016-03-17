@@ -177,24 +177,22 @@ public class Relations {
 
 		IDomain u = relation1.getDomain().getComponent(0);
 		IDomain v = relation1.getDomain().getComponent(1);
+		IDomain v2 = relation2.getDomain().getComponent(0);
 		IDomain w = relation2.getDomain().getComponent(1);
-		if (!v.equals(relation2.getDomain().getComponent(0))) {
+		if (!v.equals(v2)) {
 			throw new IllegalArgumentException("Domains do not match.");
 		}
 		
 		IDomain uw = Domain.combine(u, w);		
-		return new CalculatedFuzzySet(uw, new IIntUnaryFunction() {
-			@Override
-			public double valueAt(int arg) {
+		return new CalculatedFuzzySet(uw, elementIndex -> {
 				double membership = 0.0;
-				DomainElement xz = uw.getElement(arg);
+				DomainElement xz = uw.getElement(elementIndex);
 				for (DomainElement y : v) {
 					DomainElement xy = DomainElement.of(xz.getComponent(0), y.getComponent(0));
 					DomainElement yz = DomainElement.of(y.getComponent(0), xz.getComponent(1));
 					membership = Math.max(membership, Math.min(relation1.getMembership(xy), relation2.getMembership(yz)));
 				}
 				return membership;
-			}
 		});
 	}
 

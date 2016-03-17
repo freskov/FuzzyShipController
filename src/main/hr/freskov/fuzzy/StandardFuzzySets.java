@@ -24,17 +24,9 @@ public class StandardFuzzySets {
 		if (begin > end) {
 			throw new IllegalArgumentException("Begin index should be smaller or equal to end index.");
 		}
-		return new IIntUnaryFunction() {
-			@Override
-			public double valueAt(int arg) {
-				if (arg <= begin) {
-					return 1.0;
-				}
-				if (arg >= end) {
-					return 0.0;
-				}
-				return (double) (end - arg) / (end - begin);
-			}
+
+		return index -> {
+			return Math.min(1.0, Math.max(0.0, (double) (end - index) / (end - begin)));
 		};
 	}
 
@@ -51,17 +43,9 @@ public class StandardFuzzySets {
 		if (begin > end) {
 			throw new IllegalArgumentException("Begin index should be smaller or equal to end index.");
 		}
-		return new IIntUnaryFunction() {
-			@Override
-			public double valueAt(int arg) {
-				if (arg <= begin) {
-					return 0.0;
-				}
-				if (arg >= end) {
-					return 1.0;
-				}
-				return (double) (arg - begin) / (end - begin);
-			}
+
+		return index -> {
+			return Math.min(1.0, Math.max(0.0, (double) (index - begin) / (end - begin)));
 		};
 	}
 
@@ -83,17 +67,10 @@ public class StandardFuzzySets {
 		if (peak > end) {
 			throw new IllegalArgumentException("Peak index should be smaller or equal to end index.");
 		}
-		return new IIntUnaryFunction() {
-			@Override
-			public double valueAt(int arg) {
-				if (arg < begin || arg > end)
-					return 0.0;
-				if (arg < peak) {
-					return (double) (arg - begin) / (peak - begin);
-				} else { // arg >= peak
-					return (double) (end - arg) / (end - peak);
-				}
-			}
+		return index -> {
+			double value = index < peak ? (double) (index - begin) / (peak - begin)
+										: (double) (end - index) / (end - peak);
+			return Math.min(1.0, Math.max(0.0, value));
 		};
 	}
 
@@ -120,19 +97,10 @@ public class StandardFuzzySets {
 		if (peakEnd > end) {
 			throw new IllegalArgumentException("Peak end index should be smaller or equal to end index.");
 		}
-		return new IIntUnaryFunction() {
-			@Override
-			public double valueAt(int arg) {
-				if (arg < begin || arg > end)
-					return 0.0;
-				if (arg < peakBegin) {
-					return (double) (arg - begin) / (peakBegin - begin);
-				} else if (arg > peakEnd) {
-					return (double) (end - arg) / (end - peakEnd);
-				} else { // peakBegin <= arg <= peakEnd
-					return 1.0;
-				}
-			}
+		return index -> {
+			double value = index < peakBegin ? (double) (index - begin) / (peakBegin - begin)
+											: (double) (end - index) / (end - peakEnd);
+			return Math.min(1.0, Math.max(0.0, value));
 		};
 	}
 

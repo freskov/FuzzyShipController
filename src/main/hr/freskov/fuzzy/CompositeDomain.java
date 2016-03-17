@@ -56,6 +56,10 @@ public class CompositeDomain implements IDomain {
 		if (element == null) {
 			throw new IllegalArgumentException("Argument should not be null");
 		}
+		if (element.getNumberOfComponents() > components.length) {
+			return -1;
+		}
+		
 		int elementIndex = 0;
 		int componentIndex = 0;
 		for (IDomain component : components) {

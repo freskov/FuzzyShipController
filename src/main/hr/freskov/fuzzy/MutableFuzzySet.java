@@ -54,7 +54,7 @@ public class MutableFuzzySet implements IFuzzySet {
 	 * @param membership
 	 *            membership value
 	 */
-	public void setMembership(DomainElement element, double membership) {
+	public MutableFuzzySet setMembership(DomainElement element, double membership) {
 		if (element == null) {
 			throw new IllegalArgumentException("Argument should not be null.");
 		}
@@ -68,6 +68,7 @@ public class MutableFuzzySet implements IFuzzySet {
 		}
 
 		memberships[elementIndex] = membership;
+		return this;
 	}
 
 }

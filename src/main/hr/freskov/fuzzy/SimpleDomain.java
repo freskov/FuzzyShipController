@@ -52,7 +52,7 @@ public class SimpleDomain implements IDomain  {
 		if (element == null) {
 			throw new IllegalArgumentException("Argument should not be null");
 		}
-		if (element.getNumberOfComponents() > 1) {
+		if (element.getNumberOfComponents() != 1) {
 			return -1;
 		}
 		int value = element.getComponent(0);
