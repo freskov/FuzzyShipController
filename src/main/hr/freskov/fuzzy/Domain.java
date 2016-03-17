@@ -1,14 +1,16 @@
 package hr.freskov.fuzzy;
 
 /**
- * Abstract domain implementing static methods for creating simple and composite
- * domains through {@link #intRange(int, int)} and
- * {@link #combine(IDomain, IDomain)}.
+ * Utility class containing methods for creating simple and composite domains
+ * through {@link #intRange(int, int)} and {@link #combine(IDomain, IDomain)}.
  * 
  * @author freskov
- * @version 1.0
+ * @version 1.1
  */
-public abstract class Domain {
+public class Domain {
+
+	private Domain() {
+	}
 
 	/**
 	 * Constructs a simple integer domain <code>[first, last]</code>
