@@ -42,6 +42,7 @@ public class Domain {
 		int numberOfComponentsB = b.getNumberOfComponents();
 		int numberOfComponents = numberOfComponentsA + numberOfComponentsB;
 		SimpleDomain[] components = new SimpleDomain[numberOfComponents];
+		
 		for (int i = 0; i < numberOfComponentsA; ++i) {
 			components[i] = (SimpleDomain) a.getComponent(i);
 		}

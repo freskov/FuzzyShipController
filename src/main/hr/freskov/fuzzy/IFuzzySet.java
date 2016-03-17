@@ -2,8 +2,9 @@ package hr.freskov.fuzzy;
 
 /**
  * Interface to a fuzzy set. Fuzzy set is a set containing ordered pairs of
- * elements from a domain and their membership. Membership of the element is a
- * real value in <code>[0,1]</code>.
+ * elements from a domain <code>U</code> (universal set) and their memberships.
+ * Membership of the element is a real value in <code>[0,1]</code>.<br>
+ * <code>FuzzySet = {(x, &mu;(x)) | x &isin; U, &mu; : U -> [0,1]}</code>
  * 
  * @author freskov
  * @version 1.0

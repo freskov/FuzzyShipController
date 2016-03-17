@@ -12,7 +12,7 @@ public class Operations {
 	}
 
 	private static final IUnaryFunction ZADEH_NOT = a -> {
-		return 1-a;
+		return 1 - a;
 	};
 
 	private static final IBinaryFunction ZADEH_OR = (a, b) -> {
@@ -20,7 +20,7 @@ public class Operations {
 	};
 
 	private static final IBinaryFunction ZADEH_AND = (a, b) -> {
-			return Math.min(a, b);
+		return Math.min(a, b);
 	};
 
 	/**
@@ -51,53 +51,53 @@ public class Operations {
 	}
 
 	/**
-	 * Returns a fuzzy set that is result of performing specified function on
-	 * the given fuzzy set.
+	 * Returns a fuzzy set with membership function
+	 * <code>&mu;<sub>result</sub>(x) = f(&mu;<sub>a</sub>(x))</code>.
 	 * 
-	 * @param fuzzySet
+	 * @param a
 	 *            fuzzy set
-	 * @param function
+	 * @param f
 	 *            unary function
 	 * @return result of the function.
 	 */
-	public static IFuzzySet unaryOperation(IFuzzySet fuzzySet, IUnaryFunction function) {
-		if (fuzzySet == null || function == null) {
+	public static IFuzzySet unaryOperation(IFuzzySet a, IUnaryFunction f) {
+		if (a == null || f == null) {
 			throw new IllegalArgumentException("Argument should not be null.");
 		}
 
-		IDomain domain = fuzzySet.getDomain();
+		IDomain domain = a.getDomain();
 
 		return new CalculatedFuzzySet(domain, elementIndex -> {
 			DomainElement element = domain.getElement(elementIndex);
-			return function.valueAt(fuzzySet.getMembership(element));
+			return f.valueAt(a.getMembership(element));
 		});
 	}
 
 	/**
-	 * Returns a fuzzy set that is result of performing specified function on
-	 * the given fuzzy sets.
+	 * Returns a fuzzy set with membership function
+	 * <code>&mu;<sub>result</sub>(x) = f(&mu;<sub>a</sub>(x), &mu;<sub>b</sub>(x))</code>.
 	 * 
-	 * @param fuzzySet1
+	 * @param a
 	 *            first fuzzy set
-	 * @param fuzzySet2
+	 * @param b
 	 *            second fuzzy set
-	 * @param function
+	 * @param f
 	 *            binary function
 	 * @return result of the function.
 	 */
-	public static IFuzzySet binaryOperation(IFuzzySet fuzzySet1, IFuzzySet fuzzySet2, IBinaryFunction function) {
-		if (fuzzySet1 == null || fuzzySet2 == null || function == null) {
+	public static IFuzzySet binaryOperation(IFuzzySet a, IFuzzySet b, IBinaryFunction f) {
+		if (a == null || b == null || f == null) {
 			throw new IllegalArgumentException("Argument should not be null.");
 		}
-		if (!fuzzySet1.getDomain().equals(fuzzySet2.getDomain())) {
+		if (!a.getDomain().equals(b.getDomain())) {
 			throw new IllegalArgumentException("Fuzzy sets have different domains.");
 		}
 
-		IDomain domain = fuzzySet1.getDomain();
+		IDomain domain = a.getDomain();
 
 		return new CalculatedFuzzySet(domain, elementIndex -> {
 			DomainElement element = domain.getElement(elementIndex);
-			return function.valueAt(fuzzySet1.getMembership(element), fuzzySet2.getMembership(element));
+			return f.valueAt(a.getMembership(element), b.getMembership(element));
 		});
 	}
 

@@ -46,8 +46,8 @@ public class Relations {
 
 	/**
 	 * Checks if the relation is symmetric. Relation is symmetric if
-	 * <code>&mu;(x,y) = &mu;(y,x) &forall;x &isin; U, &forall;y &isin; V</code>
-	 * where <code>U x V</code> is the domain of the relation.
+	 * <code>&mu;(x,y) = &mu;(y,x) &forall;x,y &isin; U</code>
+	 * where <code>U x U</code> is the domain of the relation.
 	 * 
 	 * @param relation
 	 *            fuzzy relation
@@ -79,7 +79,7 @@ public class Relations {
 
 	/**
 	 * Checks if the relation is reflexive. Relation is reflexive if
-	 * <code>&mu;(x,x) = 1 &forall;x,y &isin; U</code> where
+	 * <code>&mu;(x,x) = 1 &forall;x &isin; U</code> where
 	 * <code>U x U</code> is the domain of the relation.
 	 * 
 	 * @param relation
@@ -109,7 +109,7 @@ public class Relations {
 
 	/**
 	 * Checks if the relation is max-min transitive. Relation is max-min transitive if
-	 * <code>&mu;(x,z) &ge; max(min(&mu;(x,y), &mu;(y,z)) &forall;x,y,z &isin; U</code>
+	 * <code>&mu;(x,z) &ge; max<sub>&forall;y&isin;U</sub>(min(&mu;(x,y), &mu;(y,z)) &forall;x,z &isin; U</code>
 	 * where <code>U x U</code> is the domain of the relation.
 	 * 
 	 * @param relation
@@ -133,7 +133,8 @@ public class Relations {
 				for (DomainElement y : u) {
 					DomainElement xy = DomainElement.of(x.getComponent(0), y.getComponent(0));
 					DomainElement yz = DomainElement.of(y.getComponent(0), z.getComponent(0));
-					if (Double.compare(relation.getMembership(xz), Math.min(relation.getMembership(xy), relation.getMembership(yz))) < 0) {
+					if (Double.compare(relation.getMembership(xz), 
+							Math.min(relation.getMembership(xy), relation.getMembership(yz))) < 0) {
 						return false;
 					}
 				}
@@ -161,24 +162,30 @@ public class Relations {
 	}
 
 	/**
-	 * Returns a composition of binary relations. 
+	 * Returns a composition of binary relations where domain of the first
+	 * binary relation is <code>U x V</code> and the domain of the second
+	 * relation is <code>V x W</code>. Membership function of the composition is
+	 * <code>&mu;<sub>result</sub>(x,z) = max<sub>&forall;y&isin;V</sub>(min(&mu;<sub>a</sub>(x,y), &mu;<sub>b</sub>(y,z))
+	 * &forall;x &isin; U, &forall;z &isin; W</code>.
 	 * 
-	 * @param relation1 first fuzzy relation
-	 * @param relation2 second fuzzy relation
+	 * @param a
+	 *            first fuzzy relation
+	 * @param b
+	 *            second fuzzy relation
 	 * @return composition of binary relations.
 	 */
-	public static IFuzzySet compositionOfBinaryRelations(IFuzzySet relation1, IFuzzySet relation2) {
-		if (relation1 == null || relation2 == null) {
+	public static IFuzzySet compositionOfBinaryRelations(IFuzzySet a, IFuzzySet b) {
+		if (a == null || b == null) {
 			throw new IllegalArgumentException("Argument should not be null.");
 		}
-		if (relation1.getDomain().getNumberOfComponents() != 2 || relation2.getDomain().getNumberOfComponents() != 2) {
+		if (a.getDomain().getNumberOfComponents() != 2 || b.getDomain().getNumberOfComponents() != 2) {
 			throw new IllegalArgumentException("Expected binary relations.");
 		}
 
-		IDomain u = relation1.getDomain().getComponent(0);
-		IDomain v = relation1.getDomain().getComponent(1);
-		IDomain v2 = relation2.getDomain().getComponent(0);
-		IDomain w = relation2.getDomain().getComponent(1);
+		IDomain u = a.getDomain().getComponent(0);
+		IDomain v = a.getDomain().getComponent(1);
+		IDomain v2 = b.getDomain().getComponent(0);
+		IDomain w = b.getDomain().getComponent(1);
 		if (!v.equals(v2)) {
 			throw new IllegalArgumentException("Domains do not match.");
 		}
@@ -190,7 +197,7 @@ public class Relations {
 				for (DomainElement y : v) {
 					DomainElement xy = DomainElement.of(xz.getComponent(0), y.getComponent(0));
 					DomainElement yz = DomainElement.of(y.getComponent(0), xz.getComponent(1));
-					membership = Math.max(membership, Math.min(relation1.getMembership(xy), relation2.getMembership(yz)));
+					membership = Math.max(membership, Math.min(a.getMembership(xy), b.getMembership(yz)));
 				}
 				return membership;
 		});

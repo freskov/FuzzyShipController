@@ -115,13 +115,10 @@ public class CompositeDomain implements IDomain {
 					values[i] = components[i].getElement(current[i]).getComponent(0);
 					if (updateIndex) {
 						++current[i];
-						if (current[i] == components[i].getCardinality()) {
+						updateIndex = current[i] == components[i].getCardinality();
+						if (updateIndex) {
 							current[i] = 0;
-							if (i == 0) {
-								hasNext = false;
-							}
-						} else {
-							updateIndex = false;
+							hasNext = i != 0;
 						}
 					}
 				}
