@@ -7,7 +7,7 @@ package hr.freskov.fuzzy;
  * <code>FuzzySet = {(x, &mu;(x)) | x &isin; U, &mu; : U -> [0,1]}</code>
  * 
  * @author freskov
- * @version 1.0
+ * @version 1.1
  */
 public interface IFuzzySet {
 

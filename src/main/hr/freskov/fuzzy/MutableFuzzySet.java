@@ -7,11 +7,10 @@ import java.util.Arrays;
  * can be set via {@link #setMembership(DomainElement, double)}.
  * 
  * @author freskov
- * @version 1.0
+ * @version 1.1
  */
-public class MutableFuzzySet implements IFuzzySet {
+public class MutableFuzzySet extends AbstractFuzzySet {
 
-	private IDomain domain;
 	private double[] memberships;
 
 	/**
@@ -22,11 +21,10 @@ public class MutableFuzzySet implements IFuzzySet {
 	 *            domain
 	 */
 	public MutableFuzzySet(IDomain domain) {
-		super();
+		super(domain);
 		if (domain == null) {
 			throw new IllegalArgumentException("Argument should not be null.");
 		}
-		this.domain = domain;
 		memberships = new double[domain.getCardinality()];
 		Arrays.fill(memberships, 0.0);
 	}
@@ -35,22 +33,9 @@ public class MutableFuzzySet implements IFuzzySet {
 	public IDomain getDomain() {
 		return domain;
 	}
-
-	@Override
-	public double getMembership(DomainElement element) {
-		int index = domain.indexOfElement(element);
-		if (index == -1) {
-			throw new IllegalArgumentException("Element not in domain.");
-		}
-
-		return memberships[index];
-	}
 	
 	@Override
 	public double getMembership(int index) {
-		if (index == -1) {
-			throw new IllegalArgumentException("Element not in domain.");
-		}
 		return memberships[index];
 	}
 

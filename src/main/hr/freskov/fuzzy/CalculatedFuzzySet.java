@@ -5,11 +5,10 @@ package hr.freskov.fuzzy;
  * membership on demand.
  * 
  * @author freskov
- * @version 1.0
+ * @version 1.1
  */
-public class CalculatedFuzzySet implements IFuzzySet {
+public class CalculatedFuzzySet extends AbstractFuzzySet {
 
-	private IDomain domain;
 	private IIntUnaryFunction membershipFunction;
 
 	/**
@@ -24,11 +23,10 @@ public class CalculatedFuzzySet implements IFuzzySet {
 	 *             if arguments are null.
 	 */
 	public CalculatedFuzzySet(IDomain domain, IIntUnaryFunction membershipFunction) {
-		super();
+		super(domain);
 		if (domain == null || membershipFunction == null) {
 			throw new IllegalArgumentException("Argument should not be null.");
 		}
-		this.domain = domain;
 		this.membershipFunction = membershipFunction;
 	}
 
@@ -36,27 +34,9 @@ public class CalculatedFuzzySet implements IFuzzySet {
 	public IDomain getDomain() {
 		return domain;
 	}
-
-	@Override
-	public double getMembership(DomainElement element) {
-		if (element == null) {
-			throw new IllegalArgumentException("Argument should not be null.");
-		}
-		
-		int elementIndex = domain.indexOfElement(element);
-		if (elementIndex == -1) {
-			throw new IllegalArgumentException("Element not in domain.");
-		}
-		
-		return membershipFunction.valueAt(elementIndex);
-	}
 	
 	@Override
-	public double getMembership(int index) {
-		if (index == -1) {
-			throw new IllegalArgumentException("Element not in domain.");
-		}
-		
+	public double getMembership(int index) {	
 		return membershipFunction.valueAt(index);
 	}
 

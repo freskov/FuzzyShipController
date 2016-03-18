@@ -86,7 +86,7 @@ public class Operations {
 
 		IDomain domain = a.getDomain();
 
-		return new CalculatedFuzzySet(domain, index -> f.valueAt(a.getMembership(index), b.getMembership(domain.getElement(index))));
+		return new CalculatedFuzzySet(domain, index -> f.valueAt(a.getMembership(index), b.getMembership(index)));
 	}
 
 }
