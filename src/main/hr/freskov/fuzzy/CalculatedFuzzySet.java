@@ -50,5 +50,14 @@ public class CalculatedFuzzySet implements IFuzzySet {
 		
 		return membershipFunction.valueAt(elementIndex);
 	}
+	
+	@Override
+	public double getMembership(int index) {
+		if (index == -1) {
+			throw new IllegalArgumentException("Element not in domain.");
+		}
+		
+		return membershipFunction.valueAt(index);
+	}
 
 }

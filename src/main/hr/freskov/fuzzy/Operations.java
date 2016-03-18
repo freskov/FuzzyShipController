@@ -11,17 +11,11 @@ public class Operations {
 	private Operations() {
 	}
 
-	private static final IUnaryFunction ZADEH_NOT = a -> {
-		return 1 - a;
-	};
+	private static final IUnaryFunction ZADEH_NOT = a -> 1 - a;
 
-	private static final IBinaryFunction ZADEH_OR = (a, b) -> {
-		return Math.max(a, b);
-	};
+	private static final IBinaryFunction ZADEH_OR = (a, b) -> Math.max(a, b);
 
-	private static final IBinaryFunction ZADEH_AND = (a, b) -> {
-		return Math.min(a, b);
-	};
+	private static final IBinaryFunction ZADEH_AND = (a, b) -> Math.min(a, b);
 
 	/**
 	 * Returns Zadeh not function <code>f(a) = 1 - a</code>.
@@ -67,10 +61,7 @@ public class Operations {
 
 		IDomain domain = a.getDomain();
 
-		return new CalculatedFuzzySet(domain, elementIndex -> {
-			DomainElement element = domain.getElement(elementIndex);
-			return f.valueAt(a.getMembership(element));
-		});
+		return new CalculatedFuzzySet(domain, index -> f.valueAt(a.getMembership(index)));
 	}
 
 	/**
@@ -95,10 +86,7 @@ public class Operations {
 
 		IDomain domain = a.getDomain();
 
-		return new CalculatedFuzzySet(domain, elementIndex -> {
-			DomainElement element = domain.getElement(elementIndex);
-			return f.valueAt(a.getMembership(element), b.getMembership(element));
-		});
+		return new CalculatedFuzzySet(domain, index -> f.valueAt(a.getMembership(index), b.getMembership(domain.getElement(index))));
 	}
 
 }

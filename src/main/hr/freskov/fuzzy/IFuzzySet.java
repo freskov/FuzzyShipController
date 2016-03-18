@@ -26,5 +26,14 @@ public interface IFuzzySet {
 	 * @return membership of the element.
 	 */
 	double getMembership(DomainElement element);
+	
+	/**
+	 * Returns membership of the element.
+	 * 
+	 * @param index
+	 *            domain element index
+	 * @return membership of the element.
+	 */
+	double getMembership(int index);
 
 }

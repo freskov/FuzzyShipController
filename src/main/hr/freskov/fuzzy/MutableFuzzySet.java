@@ -38,12 +38,20 @@ public class MutableFuzzySet implements IFuzzySet {
 
 	@Override
 	public double getMembership(DomainElement element) {
-		int elementIndex = domain.indexOfElement(element);
-		if (elementIndex == -1) {
+		int index = domain.indexOfElement(element);
+		if (index == -1) {
 			throw new IllegalArgumentException("Element not in domain.");
 		}
 
-		return memberships[elementIndex];
+		return memberships[index];
+	}
+	
+	@Override
+	public double getMembership(int index) {
+		if (index == -1) {
+			throw new IllegalArgumentException("Element not in domain.");
+		}
+		return memberships[index];
 	}
 
 	/**

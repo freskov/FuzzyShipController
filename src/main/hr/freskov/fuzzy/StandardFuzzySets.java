@@ -25,9 +25,8 @@ public class StandardFuzzySets {
 			throw new IllegalArgumentException("Begin index should be smaller or equal to end index.");
 		}
 
-		return index -> {
-			return Math.min(1.0, Math.max(0.0, (double) (end - index) / (end - begin)));
-		};
+		return index -> Math.min(1.0, Math.max(0.0, (double) (end - index) / (end - begin)));
+		
 	}
 
 	/**
@@ -44,9 +43,7 @@ public class StandardFuzzySets {
 			throw new IllegalArgumentException("Begin index should be smaller or equal to end index.");
 		}
 
-		return index -> {
-			return Math.min(1.0, Math.max(0.0, (double) (index - begin) / (end - begin)));
-		};
+		return index -> Math.min(1.0, Math.max(0.0, (double) (index - begin) / (end - begin)));
 	}
 
 	/**
