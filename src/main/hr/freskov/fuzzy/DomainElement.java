@@ -13,13 +13,7 @@ public class DomainElement {
 
 	private int values[];
 
-	/**
-	 * Initializes a domain element to specified values.
-	 * 
-	 * @param values
-	 *            domain element values
-	 */
-	public DomainElement(int[] values) {
+	private DomainElement(int[] values) {
 		if (values == null) {
 			throw new IllegalArgumentException("Values cannot be null.");
 		}
