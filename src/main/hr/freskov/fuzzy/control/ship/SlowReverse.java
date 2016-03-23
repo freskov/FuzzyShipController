@@ -1,6 +1,7 @@
 package hr.freskov.fuzzy.control.ship;
 
 import hr.freskov.fuzzy.CalculatedFuzzySet;
+import hr.freskov.fuzzy.FuzzySetProxy;
 import hr.freskov.fuzzy.StandardFuzzySets;
 
 /**
@@ -9,12 +10,12 @@ import hr.freskov.fuzzy.StandardFuzzySets;
  * @author freskov
  * @version 1.0
  */
-public class Fast extends FuzzySetProxy {
+public class SlowReverse extends FuzzySetProxy {
 	
-	public Fast() {
+	public SlowReverse() {
 		super(new CalculatedFuzzySet(
-				Domains.getSpeedDomain(),
-				StandardFuzzySets.gammaFunction(10, 30)));
+				ShipDomains.getSpeedDomain(),
+				StandardFuzzySets.piFunction(50, 80, 100, 100)));
 	}
 
 }

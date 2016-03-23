@@ -1,8 +1,4 @@
-package hr.freskov.fuzzy.control.ship;
-
-import hr.freskov.fuzzy.DomainElement;
-import hr.freskov.fuzzy.IDomain;
-import hr.freskov.fuzzy.IFuzzySet;
+package hr.freskov.fuzzy;
 
 /**
  * Proxy class. Redirects method calls to original fuzzy set which has to be given in the constructor.

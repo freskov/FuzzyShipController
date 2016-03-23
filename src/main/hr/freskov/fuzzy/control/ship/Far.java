@@ -1,6 +1,7 @@
 package hr.freskov.fuzzy.control.ship;
 
 import hr.freskov.fuzzy.CalculatedFuzzySet;
+import hr.freskov.fuzzy.FuzzySetProxy;
 import hr.freskov.fuzzy.StandardFuzzySets;
 
 /**
@@ -13,7 +14,7 @@ public class Far extends FuzzySetProxy {
 	
 	public Far() {
 		super(new CalculatedFuzzySet(
-				Domains.getDistanceDomain(), 
+				ShipDomains.getDistanceDomain(), 
 				StandardFuzzySets.gammaFunction(30, 70)));
 	}
 

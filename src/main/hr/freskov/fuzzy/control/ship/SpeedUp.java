@@ -10,12 +10,12 @@ import hr.freskov.fuzzy.StandardFuzzySets;
  * @author freskov
  * @version 1.0
  */
-public class WrongDirection extends FuzzySetProxy {
+public class SpeedUp extends FuzzySetProxy {
 	
-	public WrongDirection() {
+	public SpeedUp() {
 		super(new CalculatedFuzzySet(
-				ShipDomains.getDirectionDomain(),
-				StandardFuzzySets.lFunction(0, 1)));
+				ShipDomains.getDistanceDomain(), 
+				StandardFuzzySets.gammaFunction(30, 60)));
 	}
 
 }

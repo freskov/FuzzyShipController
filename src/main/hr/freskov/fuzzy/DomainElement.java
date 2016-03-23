@@ -25,7 +25,7 @@ public class DomainElement {
 	 * 
 	 * @return number of components
 	 */
-	int getNumberOfComponents() {
+	public int getNumberOfComponents() {
 		return values.length;
 	}
 
@@ -38,7 +38,7 @@ public class DomainElement {
 	 * @throws IndexOutOfBoundsException
 	 *             if <code>index < 0 || index >= values.length</code>.
 	 */
-	int getComponent(int index) {
+	public int getComponent(int index) {
 		if (index < 0 || index >= values.length) {
 			throw new IndexOutOfBoundsException("Index: " + index + " out of bounds.");
 		}

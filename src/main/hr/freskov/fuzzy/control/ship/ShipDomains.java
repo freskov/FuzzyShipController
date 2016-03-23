@@ -9,9 +9,9 @@ import hr.freskov.fuzzy.IDomain;
  * @author freskov
  * @version 1.0
  */
-public class Domains {
+public class ShipDomains {
 	
-	private Domains() {
+	private ShipDomains() {
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class Domains {
 	 * @return
 	 */
 	public static IDomain getSpeedDomain() {
-		return Domain.intRange(0, 50);
+		return Domain.intRange(-100, 100);
 	}
 	
 	/**
@@ -36,6 +36,22 @@ public class Domains {
 	 */
 	public static IDomain getDirectionDomain() {
 		return Domain.intRange(0, 1);
+	}
+	
+	/**
+	 * TODO
+	 * @return
+	 */
+	public static IDomain getAccelerationDomain() {
+		return Domain.intRange(-30, 30);
+	}
+	
+	/**
+	 * TODO
+	 * @return
+	 */
+	public static IDomain getHelmDomain() {
+		return Domain.intRange(-90, 90);
 	}
 
 }

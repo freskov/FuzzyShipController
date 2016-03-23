@@ -1,5 +1,5 @@
 # FuzzyShipController
-Ship controller based on fuzzy logic
+Ship controller as a fuzzy control system (multiple MISO systems).
 
 This project is made for the course Soft Computing on University of Zagreb, Faculty of Electrical Engineering and Computing.
 

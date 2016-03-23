@@ -1,0 +1,14 @@
+#rules need to be in this form:
+#IF input_1 IS fuzzy_set_1 AND input_2 IS fuzzy_set_2 THEN output IS fuzzy_set_3
+#where input_i are inputs to the MISO system
+#output is output from the system
+#and fuzzy_set_j are predefined fuzzy-sets
+
+IF V IS ship.FastForward AND L IS ship.Near THEN A IS ship.SpeedDown
+IF V IS ship.FastForward AND R IS ship.Near THEN A IS ship.SpeedDown
+
+IF V IS ship.SlowForward AND LK IS ship.Far THEN A IS ship.SpeedUp
+IF V IS ship.SlowForward AND RK IS ship.Far THEN A IS ship.SpeedUp
+
+IF V IS ship.FastBackward AND L IS ship.Near THEN A IS ship.SpeedUp
+IF V IS ship.FastBackward AND R IS ship.Near THEN A IS ship.SpeedUp

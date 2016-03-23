@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.management.RuntimeErrorException;
-
 import hr.freskov.fuzzy.CalculatedFuzzySet;
 import hr.freskov.fuzzy.DomainElement;
 import hr.freskov.fuzzy.IFuzzySet;
@@ -53,6 +51,7 @@ public class MamdaniRuleBase {
 	public static MamdaniRuleBase fromString(List<String> lines) {
 		ArrayList<MamdaniRule> rules = new ArrayList<>();
 		for (String line : lines) {
+			if (line.isEmpty() || line.startsWith("#")) continue;
 			rules.add(MamdaniRule.fromString(line));
 		}
 		return new MamdaniRuleBase(rules);
@@ -99,7 +98,7 @@ public class MamdaniRuleBase {
 		private static final int CONSEQUENT = 1;
 		
 		protected static MamdaniRule fromString(String string) {
-			// IF input_1 = fuzzy_set_1 AND input_2 = fuzzy_set_2 THEN output = fuzzy_set_3
+			// IF input_1 IS fuzzy_set_1 AND input_2 IS fuzzy_set_2 THEN output IS fuzzy_set_3
 			String tokens[] = string.split(" ");
 			assert("IF".equals(tokens[0]));
 			
@@ -121,7 +120,7 @@ public class MamdaniRuleBase {
 					continue;
 				}
 				
-				assert("=".equals(tokens[index+1]));
+				assert("IS".equals(tokens[index+1]));
 				
 				IFuzzySet fuzzySet = null;
 				try {
@@ -129,7 +128,7 @@ public class MamdaniRuleBase {
 					fuzzySet = (IFuzzySet) aClass.newInstance();
 				} catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
 					e.printStackTrace();
-					throw new RuntimeErrorException(new Error(e.getMessage()));
+					throw new RuntimeException(e);
 				}
 				
 				if (state == ANTECEDENT) {
