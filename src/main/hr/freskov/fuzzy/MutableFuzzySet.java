@@ -52,12 +52,12 @@ public class MutableFuzzySet extends AbstractFuzzySet {
 			throw new IllegalArgumentException("Argument should not be null.");
 		}
 		if (Double.compare(membership, 0) < 0 || Double.compare(membership, 1) > 0) {
-			throw new IllegalArgumentException("Membership has to be [0, 1].");
+			throw new IllegalArgumentException("Membership: " + membership + " has to be [0, 1].");
 		}
 
 		int elementIndex = domain.indexOfElement(element);
 		if (elementIndex == -1) {
-			throw new IllegalArgumentException("Element not in domain.");
+			throw new IllegalArgumentException("Element " + element + " not in domain: " + domain + ".");
 		}
 
 		memberships[elementIndex] = membership;

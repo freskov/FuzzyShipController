@@ -21,7 +21,7 @@ public abstract class AbstractFuzzySet implements IFuzzySet {
 		}
 		int index = domain.indexOfElement(element);
 		if (index == -1) {
-			throw new IllegalArgumentException("Element not in domain.");
+			throw new IllegalArgumentException("Element: " + element + " not in domain: " + domain + ".");
 		}
 		return getMembership(index);
 	}

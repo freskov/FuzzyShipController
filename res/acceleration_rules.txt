@@ -7,8 +7,7 @@
 IF V IS ship.FastForward AND L IS ship.Near THEN A IS ship.SpeedDown
 IF V IS ship.FastForward AND R IS ship.Near THEN A IS ship.SpeedDown
 
-IF V IS ship.SlowForward AND LK IS ship.Far THEN A IS ship.SpeedUp
-IF V IS ship.SlowForward AND RK IS ship.Far THEN A IS ship.SpeedUp
+IF V IS ship.SlowForward AND LK IS ship.Far AND RK IS ship.Far THEN A IS ship.SpeedUp
 
-IF V IS ship.FastBackward AND L IS ship.Near THEN A IS ship.SpeedUp
-IF V IS ship.FastBackward AND R IS ship.Near THEN A IS ship.SpeedUp
+IF V IS ship.FastReverse AND L IS ship.Near THEN A IS ship.SpeedUp
+IF V IS ship.FastReverse AND R IS ship.Near THEN A IS ship.SpeedUp
