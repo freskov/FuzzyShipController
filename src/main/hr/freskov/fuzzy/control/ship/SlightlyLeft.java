@@ -10,12 +10,12 @@ import hr.freskov.fuzzy.StandardFuzzySets;
  * @author freskov
  * @version 1.0
  */
-public class SpeedDown extends FuzzySetProxy {
+public class SlightlyLeft extends FuzzySetProxy {
 	
-	public SpeedDown() {
+	public SlightlyLeft() {
 		super(new CalculatedFuzzySet(
-				ShipDomains.getAccelerationDomain(), 
-				StandardFuzzySets.lFunction(0, 30)));
+				ShipDomains.getHelmDomain(),
+				StandardFuzzySets.lambdaFunction(90, 90, 180)));
 	}
 
 }

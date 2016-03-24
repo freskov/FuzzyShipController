@@ -1,0 +1,16 @@
+#rules need to be in this form:
+#IF input_1 IS fuzzy_set_1 AND input_2 IS fuzzy_set_2 THEN output IS fuzzy_set_3
+#where input_i are inputs to the MISO system
+#output is output from the system
+#and fuzzy_set_j are predefined fuzzy-sets
+
+IF LK IS ship.Near THEN K IS ship.SlightlyRight
+IF L IS ship.Near THEN K IS ship.SharpRight
+
+IF RK IS ship.Near THEN K IS ship.SlightlyLeft
+IF R IS ship.Near THEN K IS ship.SharpLeft
+
+IF S IS WrongDirection AND LK IS ship.Far AND RK IS ship.Near THEN K IS ship.SharpLeft
+IF S IS WrongDirection AND LK IS ship.Near AND RK IS ship.Far THEN K IS ship.SharpRight
+IF S IS WrongDirection AND LK IS ship.Near AND RK IS ship.Near THEN K IS ship.SharpLeft
+IF S IS WrongDirection AND LK IS ship.Far AND RK IS ship.Far THEN K IS ship.SharpLeft

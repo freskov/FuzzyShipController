@@ -14,7 +14,7 @@ public class SpeedUp extends FuzzySetProxy {
 	
 	public SpeedUp() {
 		super(new CalculatedFuzzySet(
-				ShipDomains.getDistanceDomain(), 
+				ShipDomains.getAccelerationDomain(), 
 				StandardFuzzySets.gammaFunction(30, 60)));
 	}
 
