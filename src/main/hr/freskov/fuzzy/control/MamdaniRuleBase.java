@@ -124,7 +124,7 @@ public class MamdaniRuleBase {
 				
 				IFuzzySet fuzzySet = null;
 				try {
-					Class<?> aClass = classLoader.loadClass("hr.freskov.fuzzy.control." + tokens[index+2]);
+					Class<?> aClass = classLoader.loadClass(tokens[index+2]);
 					fuzzySet = (IFuzzySet) aClass.newInstance();
 				} catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
 					e.printStackTrace();

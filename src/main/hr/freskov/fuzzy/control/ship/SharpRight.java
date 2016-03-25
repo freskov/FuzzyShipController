@@ -15,7 +15,7 @@ public class SharpRight extends FuzzySetProxy {
 	public SharpRight() {
 		super(new CalculatedFuzzySet(
 				ShipDomains.getHelmDomain(),
-				StandardFuzzySets.gammaFunction(90, 180)));
+				StandardFuzzySets.lFunction(0, 90)));
 	}
 
 }

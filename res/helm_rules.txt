@@ -4,13 +4,13 @@
 #output is output from the system
 #and fuzzy_set_j are predefined fuzzy-sets
 
-IF LK IS ship.Near THEN K IS ship.SlightlyRight
-IF L IS ship.Near THEN K IS ship.SharpRight
+#IF LK IS hr.freskov.fuzzy.control.ship.Near AND RK IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SlightlyRight
+IF L IS hr.freskov.fuzzy.control.ship.Near AND RK IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SlightlyRight
 
-IF RK IS ship.Near THEN K IS ship.SlightlyLeft
-IF R IS ship.Near THEN K IS ship.SharpLeft
+#IF RK IS hr.freskov.fuzzy.control.ship.Near AND LK IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SlightlyLeft
+IF R IS hr.freskov.fuzzy.control.ship.Near AND LK IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SlightlyLeft
 
-IF S IS ship.WrongDirection AND LK IS ship.Far AND RK IS ship.Near THEN K IS ship.SharpLeft
-IF S IS ship.WrongDirection AND LK IS ship.Near AND RK IS ship.Far THEN K IS ship.SharpRight
-IF S IS ship.WrongDirection AND LK IS ship.Near AND RK IS ship.Near THEN K IS ship.SharpLeft
-IF S IS ship.WrongDirection AND LK IS ship.Far AND RK IS ship.Far THEN K IS ship.SharpLeft
+#IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Far AND RK IS hr.freskov.fuzzy.control.ship.Near THEN K IS hr.freskov.fuzzy.control.ship.SharpLeft
+#IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Near AND RK IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SharpRight
+#IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Near AND RK IS hr.freskov.fuzzy.control.ship.Near THEN K IS hr.freskov.fuzzy.control.ship.SharpLeft
+#IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Far AND RK IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SharpLeft

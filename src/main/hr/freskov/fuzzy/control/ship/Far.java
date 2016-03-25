@@ -15,7 +15,7 @@ public class Far extends FuzzySetProxy {
 	public Far() {
 		super(new CalculatedFuzzySet(
 				ShipDomains.getDistanceDomain(), 
-				StandardFuzzySets.gammaFunction(30, 70)));
+				StandardFuzzySets.gammaFunction(50, 100)));
 	}
 
 }
