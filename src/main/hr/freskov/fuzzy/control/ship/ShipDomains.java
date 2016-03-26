@@ -27,7 +27,7 @@ public class ShipDomains {
 	 * @return
 	 */
 	public static IDomain getSpeedDomain() {
-		return Domain.intRange(-100, 100);
+		return Domain.intRange(0, 100);
 	}
 	
 	/**

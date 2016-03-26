@@ -35,10 +35,15 @@ public class MamdaniRuleBase {
 	 * @return
 	 */
 	public IFuzzySet conclusion(Map<String, Integer> input) {
+		if (input == null) {
+			throw new IllegalArgumentException("Argument should not be null.");
+		}
+		
 		IFuzzySet fs = rules.get(0).conclusion(input);
 		for (int i = 1, length = rules.size(); i < length; ++i) {
 			fs = Operations.binaryOperation(fs, rules.get(i).conclusion(input), Operations.zadehOr());
 		}
+		
 		return fs;
 	}
 	
@@ -62,14 +67,16 @@ public class MamdaniRuleBase {
 		
 		private ArrayList<Pair<String, IFuzzySet>> antecedent;
 		private IFuzzySet consequent;
+		private String rule;
 		
-		private MamdaniRule(ArrayList<Pair<String, IFuzzySet>> antecedent, IFuzzySet consequent) {
+		private MamdaniRule(ArrayList<Pair<String, IFuzzySet>> antecedent, IFuzzySet consequent, String rule) {
 			super();
 			if (antecedent == null || consequent == null) {
 				throw new IllegalArgumentException("Argument should not be null.");
 			}
 			this.antecedent = antecedent;
 			this.consequent = consequent;
+			this.rule = rule;
 		}
 		
 		private double strength(Map<String, Integer> input) {		
@@ -140,8 +147,13 @@ public class MamdaniRuleBase {
 				index += 3;
 			}
 			
-			return new MamdaniRule(antecedent, consequent);
+			return new MamdaniRule(antecedent, consequent, string);
 		}		
+		
+		@Override
+		public String toString() {
+			return rule;
+		}
 	}
 
 }

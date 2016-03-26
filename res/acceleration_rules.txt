@@ -4,10 +4,7 @@
 #output is output from the system
 #and fuzzy_set_j are predefined fuzzy-sets
 
-IF V IS hr.freskov.fuzzy.control.ship.FastForward AND L IS hr.freskov.fuzzy.control.ship.Near THEN A IS hr.freskov.fuzzy.control.ship.SpeedDown
-IF V IS hr.freskov.fuzzy.control.ship.FastForward AND R IS hr.freskov.fuzzy.control.ship.Near THEN A IS hr.freskov.fuzzy.control.ship.SpeedDown
+IF V IS hr.freskov.fuzzy.control.ship.Fast AND L IS hr.freskov.fuzzy.control.ship.Near THEN A IS hr.freskov.fuzzy.control.ship.SpeedDown
+IF V IS hr.freskov.fuzzy.control.ship.Fast AND R IS hr.freskov.fuzzy.control.ship.Near THEN A IS hr.freskov.fuzzy.control.ship.SpeedDown
 
-IF V IS hr.freskov.fuzzy.control.ship.SlowForward AND LK IS hr.freskov.fuzzy.control.ship.Far AND RK IS hr.freskov.fuzzy.control.ship.Far THEN A IS hr.freskov.fuzzy.control.ship.SpeedUp
-
-IF V IS hr.freskov.fuzzy.control.ship.FastReverse AND L IS hr.freskov.fuzzy.control.ship.Near THEN A IS hr.freskov.fuzzy.control.ship.SpeedUp
-IF V IS hr.freskov.fuzzy.control.ship.FastReverse AND R IS hr.freskov.fuzzy.control.ship.Near THEN A IS hr.freskov.fuzzy.control.ship.SpeedUp
+IF V IS hr.freskov.fuzzy.control.ship.Slow AND LK IS hr.freskov.fuzzy.control.ship.Far AND RK IS hr.freskov.fuzzy.control.ship.Far THEN A IS hr.freskov.fuzzy.control.ship.SpeedUp

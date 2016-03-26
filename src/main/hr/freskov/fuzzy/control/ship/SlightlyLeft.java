@@ -15,7 +15,7 @@ public class SlightlyLeft extends FuzzySetProxy {
 	public SlightlyLeft() {
 		super(new CalculatedFuzzySet(
 				ShipDomains.getHelmDomain(),
-				StandardFuzzySets.lambdaFunction(0, 90, 90)));
+				StandardFuzzySets.lambdaFunction(90, 90, 135)));
 	}
 
 }

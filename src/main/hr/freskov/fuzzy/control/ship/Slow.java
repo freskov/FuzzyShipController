@@ -10,12 +10,12 @@ import hr.freskov.fuzzy.StandardFuzzySets;
  * @author freskov
  * @version 1.0
  */
-public class SlowReverse extends FuzzySetProxy {
+public class Slow extends FuzzySetProxy {
 	
-	public SlowReverse() {
+	public Slow() {
 		super(new CalculatedFuzzySet(
 				ShipDomains.getSpeedDomain(),
-				StandardFuzzySets.piFunction(50, 80, 100, 100)));
+				StandardFuzzySets.lFunction(20, 50)));
 	}
 
 }

@@ -65,8 +65,8 @@ public class StandardFuzzySets {
 			throw new IllegalArgumentException("Peak index should be smaller or equal to end index.");
 		}
 		return index -> {
-			double value = index < peak ? (double) (index - begin) / (peak - begin)
-										: (double) (end - index) / (end - peak);
+			double value = index < peak ? (double) (index - begin) / Math.max(peak - begin, 1)
+										: (double) (end - index) / Math.max(end - peak, 1);
 			return Math.min(1.0, Math.max(0.0, value));
 		};
 	}
@@ -95,8 +95,8 @@ public class StandardFuzzySets {
 			throw new IllegalArgumentException("Peak end index should be smaller or equal to end index.");
 		}
 		return index -> {
-			double value = index < peakBegin ? (double) (index - begin) / (peakBegin - begin)
-											: (double) (end - index) / (end - peakEnd);
+			double value = index < peakBegin ? (double) (index - begin) / Math.max(peakBegin - begin, 1)
+											: (double) (end - index) / Math.max(end - peakEnd, 1);
 			return Math.min(1.0, Math.max(0.0, value));
 		};
 	}

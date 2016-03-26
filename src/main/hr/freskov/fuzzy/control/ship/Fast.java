@@ -10,12 +10,12 @@ import hr.freskov.fuzzy.StandardFuzzySets;
  * @author freskov
  * @version 1.0
  */
-public class FastForward extends FuzzySetProxy {
+public class Fast extends FuzzySetProxy {
 	
-	public FastForward() {
+	public Fast() {
 		super(new CalculatedFuzzySet(
 				ShipDomains.getSpeedDomain(),
-				StandardFuzzySets.gammaFunction(120, 150)));
+				StandardFuzzySets.gammaFunction(20, 50)));
 	}
 
 }
