@@ -15,7 +15,7 @@ public class Near extends FuzzySetProxy {
 	public Near() {
 		super(new CalculatedFuzzySet(
 				ShipDomains.getDistanceDomain(),
-				StandardFuzzySets.lFunction(20, 50)));
+				StandardFuzzySets.lFunction(30, 70)));
 	}
 
 }

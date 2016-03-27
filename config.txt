@@ -1,0 +1,4 @@
+java -cp bin hr.freskov.fuzzy.control.ship.Main
+1
+15
+15

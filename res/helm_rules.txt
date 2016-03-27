@@ -4,13 +4,11 @@
 #output is output from the system
 #and fuzzy_set_j are predefined fuzzy-sets
 
-IF LK IS hr.freskov.fuzzy.control.ship.Near AND R IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SharpRight
-IF L IS hr.freskov.fuzzy.control.ship.Near AND R IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SlightlyRight
+IF LK IS hr.freskov.fuzzy.control.ship.Near AND D IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SharpRight
+IF DK IS hr.freskov.fuzzy.control.ship.Near AND L IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SharpLeft
 
-IF RK IS hr.freskov.fuzzy.control.ship.Near AND L IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SharpLeft
-IF R IS hr.freskov.fuzzy.control.ship.Near AND L IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SlightlyLeft
-
-#IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Far AND RK IS hr.freskov.fuzzy.control.ship.Near THEN K IS hr.freskov.fuzzy.control.ship.SharpLeft
-#IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Near AND RK IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SharpRight
-#IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Near AND RK IS hr.freskov.fuzzy.control.ship.Near THEN K IS hr.freskov.fuzzy.control.ship.SharpLeft
-#IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Far AND RK IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SharpLeft
+IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Far AND DK IS hr.freskov.fuzzy.control.ship.Near THEN K IS hr.freskov.fuzzy.control.ship.SharpLeft
+IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Near AND DK IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SharpRight
+IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Near AND DK IS hr.freskov.fuzzy.control.ship.Near AND L IS hr.freskov.fuzzy.control.ship.Near THEN K IS hr.freskov.fuzzy.control.ship.SharpRight
+IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Near AND DK IS hr.freskov.fuzzy.control.ship.Near AND D IS hr.freskov.fuzzy.control.ship.Near THEN K IS hr.freskov.fuzzy.control.ship.SharpLeft
+IF S IS hr.freskov.fuzzy.control.ship.WrongDirection AND LK IS hr.freskov.fuzzy.control.ship.Far AND DK IS hr.freskov.fuzzy.control.ship.Far THEN K IS hr.freskov.fuzzy.control.ship.SharpLeft
