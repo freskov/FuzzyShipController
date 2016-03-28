@@ -5,7 +5,8 @@ import hr.freskov.fuzzy.IDomain;
 import hr.freskov.fuzzy.IFuzzySet;
 
 /**
- * TODO
+ * Center of area defuzzifier. <code>x<sub>COA</sub> = &sum;<sub>x&isin;U</sub>
+ * x*&mu;(x) / &sum;<sub>x&isin;U</sub>&mu;(x).
  * 
  * @author freskov
  * @version 1.0

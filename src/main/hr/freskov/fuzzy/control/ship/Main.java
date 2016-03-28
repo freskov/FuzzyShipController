@@ -40,9 +40,9 @@ public class Main {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		IDefuzzifier defuzzifier = new COADefuzzifier();
 		List<String> accelerationRules = FileLoader.readFile("res/acceleration_rules.txt");
-		FuzzySystem accelerationFS = new FuzzySystem(MamdaniRuleBase.fromString(accelerationRules), defuzzifier);
+		FuzzySystem accelerationFS = new FuzzySystem(new MamdaniRuleBase(accelerationRules), defuzzifier);
 		List<String> helmRules = FileLoader.readFile("res/helm_rules.txt");
-		FuzzySystem helmFS = new FuzzySystem(MamdaniRuleBase.fromString(helmRules), defuzzifier);
+		FuzzySystem helmFS = new FuzzySystem(new MamdaniRuleBase(helmRules), defuzzifier);
 
 		Map<String, Integer> input = new HashMap<>();
 		String line = null;

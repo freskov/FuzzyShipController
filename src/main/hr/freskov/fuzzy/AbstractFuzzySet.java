@@ -10,7 +10,7 @@ public abstract class AbstractFuzzySet implements IFuzzySet {
 	
 	protected IDomain domain;
 	
-	public AbstractFuzzySet(IDomain domain) {
+	protected AbstractFuzzySet(IDomain domain) {
 		this.domain = domain;
 	}
 	
@@ -26,6 +26,4 @@ public abstract class AbstractFuzzySet implements IFuzzySet {
 		return getMembership(index);
 	}
 	
-	
-
 }

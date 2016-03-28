@@ -12,15 +12,25 @@ import hr.freskov.fuzzy.IFuzzySet;
  */
 public class FuzzySystem {
 	
-	private MamdaniRuleBase ruleBase;
+	private IRuleBase ruleBase;
 	private IDefuzzifier defuzzifier;
 	
-	public FuzzySystem(MamdaniRuleBase ruleBase, IDefuzzifier defuzzifier) {
+	/**
+	 * TODO
+	 * @param ruleBase
+	 * @param defuzzifier
+	 */
+	public FuzzySystem(IRuleBase ruleBase, IDefuzzifier defuzzifier) {
 		super();
 		this.ruleBase = ruleBase;
 		this.defuzzifier = defuzzifier;
 	}
 	
+	/**
+	 * TODO
+	 * @param input
+	 * @return
+	 */
 	public int getOutput(Map<String, Integer> input) {
 		IFuzzySet conclusion = ruleBase.conclusion(input);
 		return defuzzifier.defuzzify(conclusion);
