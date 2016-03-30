@@ -5,7 +5,8 @@ import java.util.Map;
 import hr.freskov.fuzzy.IFuzzySet;
 
 /**
- * TODO
+ * Defines a base of fuzzy IF-THEN rules. Offers a method {@link #conclude(Map)}
+ * which calculates the output specified by the rules.
  * 
  * @author freskov
  * @version 1.0
@@ -13,10 +14,12 @@ import hr.freskov.fuzzy.IFuzzySet;
 public interface IRuleBase {
 
 	/**
-	 * TODO
+	 * Returns a fuzzy set that is a result of conclusion of all rules.
+	 * 
 	 * @param input
-	 * @return
+	 *            variable name -> value mapping
+	 * @return fuzzy set that is a result of conclusion of all rules.
 	 */
-	IFuzzySet conclusion(Map<String, Integer> input);
+	IFuzzySet conclude(Map<String, Integer> input);
 
 }
